@@ -6,7 +6,7 @@ export interface Card {
 export interface Column {
     id: string;
     title: string;
-    cards: Card[];
+    cardIds: string[];
 }
 
 export interface Board {
