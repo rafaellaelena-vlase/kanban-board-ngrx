@@ -1,1 +1,45 @@
-<p>column works!</p>
+<div class="column-wrapper">
+    <h3 class="column-title">{{column.title}}</h3>
+    <div class="cards-container">
+        @for (card of column.cards; track card.id) {
+            <app-card-component [card]="card"></app-card-component>
+        }
+    </div>
+
+    <div class="add-card-container">
+    @if (!isAddingCard) {
+      <p-button 
+        icon="pi pi-plus" 
+        label="Add new task" 
+        (click)="isAddingCard = true" 
+        [rounded]="true"
+        [raised]="true"
+        [text]="true"></p-button>
+    } @else {
+      <div class="add-card-form">
+        <input 
+            type="text" 
+            pInputText 
+            placeholder="Add a title" 
+            [formControl]="newCardText" 
+        />
+        <div class="form-actions">
+          <p-button 
+            label="Add Task" 
+            (click)="onAddCard()" 
+            [disabled]="newCardText.invalid"
+            [rounded]="true"
+            [raised]="true"
+            [text]="true"></p-button>
+          <p-button 
+            label="Cancel"
+            class="cancel-button" 
+            (click)="isAddingCard = false; newCardText.reset();"
+            [rounded]="true"
+            [raised]="true"
+            [text]="true"></p-button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

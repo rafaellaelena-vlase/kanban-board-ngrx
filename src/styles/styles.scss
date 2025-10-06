@@ -1,0 +1,8 @@
+@use './colors.scss' as *;
+
+body {
+  background-color: $secondary-950; 
+  color: $text-on-dark; 
+  font-family: Inter, sans-serif; 
+  margin: 0;
+}

@@ -1,9 +1,14 @@
-<div class="board-page">
+<div class="kanban-board">
+  <header class="board-header">
+    <h2>Kanban Board</h2>
+    <button class="add-column-btn">+ Add Column</button>
+  </header>
+
+  <div class="board-columns">
     @if (columns$ | async; as columns) {
-        <div class="columns-container">
-            @for (column of columns; track column.id) {
-                <app-column [column]="column"></app-column>
-            }
-        </div>
+      @for (column of columns; track column.id) {
+        <app-column [column]="column"></app-column>
+      }
     }
+  </div>
 </div>

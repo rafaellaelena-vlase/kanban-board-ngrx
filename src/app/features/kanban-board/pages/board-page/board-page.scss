@@ -1,0 +1,48 @@
+@use '../../../../../styles/colors.scss' as *;
+
+.kanban-board {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: $secondary-900; 
+  border-bottom: 1px solid $secondary-800;
+  flex-shrink: 0;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-secondary-dark;
+  }
+}
+
+.add-column-btn {
+  background-color: $primary-500; 
+  color: $text-on-dark;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $primary-600;
+  }
+}
+
+.board-columns {
+  display: flex;
+  flex-grow: 1;
+  overflow-x: auto;
+  padding: 2.5rem; 
+  gap: 1.5rem;
+}
