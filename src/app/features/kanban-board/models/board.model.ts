@@ -9,6 +9,10 @@ export interface Column {
     cardIds: string[];
 }
 
+export interface ColumnWithCards extends Column {
+    cards: Card[];
+}
+
 export interface Board {
     cards: {[key: string]: Card};
     columns: {[key: string]: Column};

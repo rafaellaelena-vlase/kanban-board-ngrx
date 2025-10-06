@@ -11,17 +11,17 @@ export const initialBoardState: Board = {
         'column-1': {
             id: 'column-1',
             title: 'To Do',
-            cards: ['card-2', 'card-3'].map(id => ({ id, text: initialBoardState.cards[id].text }))
+            cardIds: ['card-2', 'card-3']
         },
         'column-2': {
             id: 'column-2',
             title: 'In Progress',
-            cards: ['card-1'].map(id => ({ id, text: initialBoardState.cards[id].text }))
+            cardIds: ['card-1']
         },
         'column-3': {
             id: 'column-3',
             title: 'Done',
-            cards: []
+            cardIds: []
         }
     },
     columnOrder: ['column-1', 'column-2', 'column-3']

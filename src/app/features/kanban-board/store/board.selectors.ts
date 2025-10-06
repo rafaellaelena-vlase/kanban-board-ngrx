@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector, select } from "@ngrx/store";
-import { Board } from "../models/board.model";
+import { Board, ColumnWithCards } from "../models/board.model";
 
 export const selectBoardState = createFeatureSelector<Board>('board');
 
@@ -22,7 +22,7 @@ export const selectColumnsWithCards = createSelector(
     selectAllColumns,
     selectAllCards,
     selectColumnOrder,
-    (columns, cards, columnOrder) => {
+    (columns, cards, columnOrder): ColumnWithCards[] => {
         return columnOrder.map(columnId => {
             const column = columns[columnId];
             const cardsInColumn = column.cardIds.map(cardId => cards[cardId]);

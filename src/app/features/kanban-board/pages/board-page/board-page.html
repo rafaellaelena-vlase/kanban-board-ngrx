@@ -1,0 +1,9 @@
+<div class="board-page">
+    @if (columns$ | async; as columns) {
+        <div class="columns-container">
+            @for (column of columns; track column.id) {
+                <app-column [column]="column"></app-column>
+            }
+        </div>
+    }
+</div>
