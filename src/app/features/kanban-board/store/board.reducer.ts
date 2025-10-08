@@ -1,5 +1,6 @@
-import { createReducer } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 import { Board } from "../models/board.model";
+import * as BoardActions from "./board.actions";
 
 export const initialBoardState: Board = {
     cards: {
@@ -28,5 +29,26 @@ export const initialBoardState: Board = {
 }
 
 export const boardReducer = createReducer(
-    initialBoardState
+    initialBoardState,
+    on(BoardActions.addCard, (state, { text, columnId }) => {
+        const newCardId = `card-${Object.keys(state.cards).length + 1}`;
+        const newCard = { id: newCardId, text };
+        const targetColumn = state.columns[columnId];
+        const newCardIds = [...targetColumn.cardIds, newCardId];
+
+        return {
+            ...state,
+            cards: {
+                ...state.cards,
+                [newCardId]: newCard
+            },
+            columns: {
+                ...state.columns,
+                [columnId]: {
+                    ...targetColumn,
+                    cardIds: newCardIds,
+                },
+            },
+        };
+    })
 );
