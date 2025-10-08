@@ -1,8 +1,10 @@
 <div class="column-wrapper">
     <h3 class="column-title">{{column.title}}</h3>
     <div class="cards-container">
-        @for (card of column.cards; track card.id) {
-            <app-card-component [card]="card"></app-card-component>
+        @for (card of column.cards; track card.id; let i = $index) {
+            <app-card-component
+             [card]="card"
+             (move)="onMoveCard(card.id, column.id, i)"></app-card-component>
         }
     </div>
 

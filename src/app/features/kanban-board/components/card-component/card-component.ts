@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from '../../models/board.model';
 
 @Component({
@@ -9,4 +9,5 @@ import { Card } from '../../models/board.model';
 })
 export class CardComponent {
   @Input() card: Card;
+  @Output() move = new EventEmitter<void>();
 }

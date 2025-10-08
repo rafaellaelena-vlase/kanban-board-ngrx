@@ -4,5 +4,14 @@
   </div>
   <div class="card-footer">
     <span class="card-id">{{ card.id.toUpperCase() }}</span>
+    <div class="card-actions">
+      <p-button
+        label="Move" 
+        (click)="move.emit()"
+        [rounded]="true"
+        [raised]="true"
+        [text]="true"
+      ></p-button>
     </div>
+  </div>
 </div>

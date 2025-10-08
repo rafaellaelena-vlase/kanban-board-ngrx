@@ -9,7 +9,8 @@
       @for (column of columns; track column.id) {
         <app-column 
         [column]="column"
-        (addCard)="onAddCard($event, column.id)"></app-column>
+        (addCard)="onAddCard($event, column.id)"
+        (moveCard)="onMovedCard($event)"></app-column>
       }
     }
   </div>
