@@ -50,5 +50,43 @@ export const boardReducer = createReducer(
                 },
             },
         };
+    }),
+    on(BoardActions.moveCard, (state, { cardId, fromColumnId, toColumnId, toIndex }) => {
+        if (fromColumnId === toColumnId) {
+            const fromColumn = state.columns[fromColumnId];
+            const newCardIds = [...fromColumn.cardIds];
+
+            newCardIds.splice(newCardIds.indexOf(cardId), 1);
+            newCardIds.splice(toIndex, 0, cardId);
+
+            return {
+                ...state,
+                columns: {
+                    ...state.columns,
+                    [fromColumnId]: {
+                        ...fromColumn,
+                        cardIds: newCardIds
+                    }
+                }
+            };
+        } else {
+            const fromColumn = state.columns[fromColumnId];
+            const toColumn = state.columns[toColumnId];
+            const newFromCardIds = [...fromColumn.cardIds];
+            const newToCardIds = [...toColumn.cardIds];
+
+            newFromCardIds.splice(newFromCardIds.indexOf(cardId), 1);
+            newToCardIds.splice(toIndex, 0, cardId);
+
+            return {
+                ...state,
+                columns: {
+                    ...state.columns,
+                    [fromColumnId]: { ...fromColumn, cardIds: newFromCardIds },
+                    [toColumnId]: { ...toColumn, cardIds: newToCardIds},
+                },
+            };
+
+        }
     })
 );

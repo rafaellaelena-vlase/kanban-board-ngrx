@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ColumnWithCards } from '../../models/board.model';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { selectColumnsWithCards } from '../../store/board.selectors';
+import * as BoardActions from '../../store/board.actions';
 
 @Component({
   selector: 'app-board-page',
@@ -17,5 +18,9 @@ export class BoardPage implements OnInit{
 
   ngOnInit(): void {
     this.columns$ = this.store.select(selectColumnsWithCards);
+  }
+
+  onAddCard(text: string, columnId: string): void {
+    this.store.dispatch(BoardActions.addCard({ text, columnId }));
   }
 }

@@ -7,7 +7,9 @@
   <div class="board-columns">
     @if (columns$ | async; as columns) {
       @for (column of columns; track column.id) {
-        <app-column [column]="column"></app-column>
+        <app-column 
+        [column]="column"
+        (addCard)="onAddCard($event, column.id)"></app-column>
       }
     }
   </div>
